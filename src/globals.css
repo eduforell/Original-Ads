@@ -1,8 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/HelveticaRegular_0.ttf');
+}
+
+@font-face {
+  font-family: 'Helvetica-Light';
+  src: url('/fonts/HelvetticaLight_0.ttf');
+}
+
+@font-face {
+  font-family: 'Helvetica-Bold';
+  src: url('/fonts/HelveticaBold_0.ttf');
+}
 
 @layer base {
   * {
@@ -10,7 +25,11 @@
   }
 
   body {
-    @apply bg-light-1 text-dark-2 min-h-screen font-inter scroll-smooth;
+    @apply bg-light-4 text-original-dark min-h-screen font-helvetica scroll-smooth;
+  }
+
+  html {
+    font-family: 'Helvetica', system-ui, sans-serif;
   }
 }
 
@@ -97,8 +116,14 @@
     @apply flex justify-start items-center;
   }
 
-  .hide-user-info {
-    display: none;
+  .produtos-bg {
+    background: linear-gradient(
+      to right,
+      #ffba26 0%,
+      #ffba26 25%,
+      transparent 25%,
+      transparent 100%
+    );
   }
 
   .custom-scrollbar::-webkit-scrollbar {
@@ -155,7 +180,7 @@
 
   /* Topbar */
   .topbar {
-    @apply sticky top-0 z-10 bg-original w-full text-dark-2;
+    @apply sticky top-0 z-10 bg-original w-full text-original-black font-bold;
   }
 }
 

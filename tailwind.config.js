@@ -15,6 +15,9 @@ export const theme = {
       '2xl': '1400px',
     },
   },
+  fontFamily: {
+    helvetica: ['Helvetica', 'sans-serif'],
+  },
   listStyleType: {
     none: 'none',
     disc: 'disc',
@@ -24,11 +27,6 @@ export const theme = {
   },
   extend: {
     colors: {
-      'primary-500': '#e716a1',
-      'primary-600': '#5D5FEF',
-      'secondary-500': '#FFB620',
-      'off-white': '#D0DFFF',
-      red: '#FF5A5A',
       'dark-1': '#000000',
       'dark-2': '#09090A',
       'dark-3': '#101012',
@@ -36,15 +34,11 @@ export const theme = {
       'light-1': '#FFFFFF',
       'light-2': '#EFEFEF',
       'light-3': '#7878A3',
-      'light-4': '#5C5C7B',
+      'light-4': '#f5f5f5',
       original: '#FFBA26',
-      'original-dark': '#454749',
-      'original-bg': '#191c1e',
-      'lode-bg': '#191919',
-      'lode-purple': '#877eff',
-      'lode-confirm': '#34a62e',
-      'lode-recebido': '#444444',
-      'lode-enviado': '#5b53bc',
+      'original-dark': '#505355',
+      'original-dark1': '#5C5F61',
+      'original-black': '#000000',
     },
     screens: {
       xs: '480px',
@@ -54,7 +48,7 @@ export const theme = {
       465: '465px',
     },
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
+      helvetica: ['Helvetica', 'sans-serif'],
     },
     keyframes: {
       'accordion-down': {

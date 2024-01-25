@@ -1,4 +1,4 @@
-import VideoBg from '../assets/images/pexels-rostislav-uzunov-10613972-1080p-1.mp4'
+import HeroBG from '../assets/images/hero-original.jpg'
 
 const scrollToNossosProdutos = () => {
     const nossosProdutosElement = document.getElementById('nossos-produtos');
@@ -13,18 +13,19 @@ const scrollToNossosProdutos = () => {
 const Hero = () => {
     return (
         <div className="home-container">
-            <video src={VideoBg} autoPlay loop muted />
+            <img src={HeroBG} className='opacity-10 md:opacity-100' />
             <div className='hero-content'>
-                <p className='text-white'>Label text copy small</p>
-                <h2 className="text-12 md:h2-bold text-white">
-                    Lorem ipsum dolor sit amet consectetur.<br /> Dictumst lest sit amet consectuer
+
+                <h2 className="text-12 md:h2-bold text-original-black">
+                    Solução tecnológica para Programmatic<br />Deals e Projetos Especiais
                 </h2>
-                <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
+                <p className='text-original-black'>Original Ads</p>
+                <hr className="border w-[200px] border-original/100  mt-4 mb-4" />
                 <div className='flex flex-row gap-6'>
-                    <button className='bg-light-1 text-dark-2 w-[150px] h-[40px] md:w-[220px] md:h-[60px] rounded'>
+                    <button className='bg-original-black text-white w-[150px] h-[40px] md:w-[220px] md:h-[60px] rounded hover:border hover:invert hover:outline-1 hover:bg-transparent'>
                         <h4 className='text-sm md:h4-bold'>Fazer um orçamento</h4>
                     </button>
-                    <button onClick={scrollToNossosProdutos} className='outline-1 border border-light-1 text-light-1 w-[150px] h-[40px] md:w-[220px] md:h-[60px] rounded'>
+                    <button onClick={scrollToNossosProdutos} className='outline-1 border border-original-black text-original-black w-[150px] h-[40px] md:w-[220px] md:h-[60px] rounded hover:text-white hover:bg-original-black'>
                         <h4 className='text-sm md:h4-bold'>Nossos Produtos</h4>
                     </button>
                 </div>

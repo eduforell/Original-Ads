@@ -5,10 +5,9 @@ const Orcamento = () => {
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        <div className="bg-dark-4 flex flex-col md:flex-row items-center justify-center h-[280px] md:h-[180px] gap-4">
+        <div className="bg-original-dark1 flex flex-col md:flex-row items-center justify-center h-[280px] md:h-[180px] gap-4">
             <div className="w-full md:w-1/5 px-4 ">
-                <h2 className="h4 leading-5 text-white">Solicite um orçamento</h2>
-                <p>Label Text copy small</p>
+                <h2 className=" text-white">Inscreva-se em nossa newsletter</h2>
             </div>
             <div className="w-full md:w-3/5 relative px-4">
                 <input

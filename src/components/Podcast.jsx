@@ -1,63 +1,64 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Globo from '../assets/images/globo.png';
-import Terra from '../assets/images/terra.png';
-import UOL from '../assets/images/uol.webp';
-import R7 from '../assets/images/r7.png';
-import VIX from '../assets/images/vix.png';
-import PurePeople from '../assets/images/pure-people.svg';
+import PelasPistas from '../assets/images/podcast/pelas-pistas.png';
+import Agro360 from '../assets/images/podcast/agro-360.png';
+import Rolezica from '../assets/images/podcast/rolezica.png';
+import PodVir from '../assets/images/podcast/podvir.png';
+import NaMedida from '../assets/images/podcast/na-medida.png';
+import Wikipod from '../assets/images/podcast/wikipod.png';
+import BeAFounder from '../assets/images/podcast/be-a-founder.png';
+import BolaPresa from '../assets/images/podcast/bola-presa.png';
 
-const categorias = [
-    { id: 1, titulo: 'Portais', logos: [Globo, Terra, UOL, R7] },
-    { id: 2, titulo: 'Feminino', logos: [VIX, PurePeople] },
+
+const podcasts = [
+    { id: 1, titulo: 'PelasPistas', logo: PelasPistas },
+    { id: 2, titulo: 'Agro360', logo: Agro360 },
+    { id: 3, titulo: 'Rolezica', logo: Rolezica },
+    { id: 4, titulo: 'Feminino', logo: PodVir },
+    { id: 5, titulo: 'Feminino', logo: NaMedida },
+    { id: 6, titulo: 'Feminino', logo: Wikipod },
+    { id: 7, titulo: 'Feminino', logo: BeAFounder },
+    { id: 8, titulo: 'Feminino', logo: BolaPresa },
+
 ];
-
-const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 2, // Altere o número de cards visíveis conforme necessário
-    slidesToScroll: 1,
-    responsive: [
-        {
-            breakpoint: 768, // Médio
-            settings: {
-                slidesToShow: 1, // Ajuste para 3 cards por vez em telas médias
-            },
-        },
-        {
-            breakpoint: 480, // Pequeno
-            settings: {
-                slidesToShow: 1, // Mantenha 1 card por vez em telas pequenas
-            },
-        },
-    ],
-};
 
 const Podcast = () => {
     return (
         <>
-            <div className="w-full md:w-3/5 py-12 md:p-8 mt-16 md:mt-4 p-8">
-                <h2 className="w-full md:text-2xl h2-bold mb-4 text-dark-4">Podcast</h2>
-                <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
-                <p className='text-dark-4 text-justify py-4'>Lorem ipsum dolor sit amet consectetur. Neque neque imperdiet scelerisque dapibus. Est cras purus.</p>
-            </div>
-            <Slider {...settings}>
-                {categorias.map((categoria) => (
-                    <div key={categoria.id} className="px-12">
-                        <div className=" min-w-[240px] md:max-w-[260px] p-6 border border-gray-900 rounded-[10px]">
-                            <h3 className="text-dark-3 text-lg text-center">{categoria.titulo}</h3>
-                            <hr className="my-2 border-t border-gray-900" />
-                            <div className="flex flex-col justify-center items-center gap-4 mt-5">
-                                {categoria.logos.map((logo, index) => (
-                                    <img key={index} src={logo} alt={`Logo ${categoria.titulo} ${index + 1}`} className="mx-2" width={80} />
-                                ))}
-                            </div>
-                        </div>
+            <div className="bg-white pb-12">
+                <div className="w-full py-12 md:p-8 mt-16 md:mt-4 p-8">
+                    <h2 className="w-full md:text-2xl h2-bold mb-4 text-original-black">Podcasts</h2>
+                    <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
+                    <p className="text-dark-4 text-justify py-4">
+                        Em todos estes shows, podem ser trabalhados:
+                    </p>
+                    <div className='flex flex-col md:flex-row w-full'>
+                        <ul className='pl-6 md:mr-10'>
+                            <li className='list-disc'>Branded Podcasts</li>
+                            <li className='list-disc'>Host Read</li>
+                            <li className='list-disc'>Spot</li>
+                        </ul>
+                        <ul className='pl-6 md:mr-10'>
+                            <li className='list-disc'>Product Placements dentro do estúdio</li>
+                            <li className='list-disc'>Personalização de estúdio para marca</li>
+                            <li className='list-disc'>QR-Code em tela para redirecionamento</li>
+                        </ul>
+                        <ul className='pl-6 md:mr-10'>
+                            <li className='list-disc'>Criação de quadros</li>
+                            <li className='list-disc'>Cortes patrocinados</li>
+                            <li className='list-disc'>Projetos especiais</li>
+                        </ul>
                     </div>
-                ))}
-            </Slider>
+                    <p className='pt-5'>
+                        E todos conteúdos nativos, gerando uma imersão extremamente valiosa para a marca.
+                    </p>
+                </div>
+                <div className="grid grid-cols-3 md:grid-cols-8 gap-6 px-8">
+                    {podcasts.map((categoria) => (
+                        <div key={categoria.id} className="w-24 h-24 md:w-32 md:h-32 border border-gray-900 rounded-[6px]">
+                            <img src={categoria.logo} alt={`Logo ${categoria.titulo}`} className="w-full h-full object-contain" />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </>
     )
 }

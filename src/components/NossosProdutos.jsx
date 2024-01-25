@@ -1,14 +1,26 @@
+import BgNossosProdutos from '../assets/images/nossos-produtos.png'
+
 const NossosProdutos = () => {
     return (
         <>
-            <div className="container flex flex-col text-center bg-white relative mb-10" id="nossos-produtos">
-                <h2 className="w-full md:text-2xl h2-bold mb-4 text-dark-4 pt-10">Nossos Produtos</h2>
-                <hr className="border w-full border-original/90 mt-4 mb-4" />
-                <p className='text-dark-4 py-4'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
+            <div className="flex items-center mx-auto mt-[80px] md:mt-0 flex-col sm:flex-row" id="nossos-produtos">
+                {/* 40% de imagem de background */}
+                <div className="w-full md:w-2/5 p-10">
+                    <h2 className="w-full md:text-2xl h2-bold mb-4 text-original-black">Nossos Produtos</h2>
+                    <p className='uppercase font-medium'>O que podemos viabilizar via Original Ads</p>
+                    <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
+                    <ul className="py-4 px-4">
+                        <li className="list-disc py-2">Indicação de Audiências (1st / 3rd Party) e Inventário (Lista de Publishers ou Black Lists)</li>
+                        <li className="list-disc py-2">Segmentação (Geo-Localização, Demográfico, Contextual, Devices, etc)</li>
+                        <li className="list-disc py-2">Perfomance KPIs (VTR e Viewability)</li>
+                        <li className="list-disc py-2">Projetos Especiais (Podcasts, Videocasts, DOOH, Produção de vídeos virais, Branded Posts, Stories, Shorts, etc)</li>
+                    </ul>
+                </div>
+                {/* 60% de conteúdo de texto */}
+                <div className="w-full md:w-3/5 flex items-center justify-center">
+                    <img src={BgNossosProdutos} alt="BG Quem Somos - Original Ads" className="overflow-hidden" />
+                </div>
             </div>
-
         </>
     )
 }

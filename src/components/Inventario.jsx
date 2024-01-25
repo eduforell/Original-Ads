@@ -1,72 +1,81 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Globo from '../assets/images/globo.png';
-import Terra from '../assets/images/terra.png';
-import UOL from '../assets/images/uol.webp';
-import R7 from '../assets/images/r7.png';
-import VIX from '../assets/images/vix.png';
-import PurePeople from '../assets/images/pure-people.svg';
-import TudoGostoso from '../assets/images/tudogostoso.png';
-import MinhaVida from '../assets/images/minha-vida.jpg';
-import Webmotors from '../assets/images/webmotors.png';
-import iCarros from '../assets/images/icarros.webp';
+import Globo from '../assets/images/inventario/globo.png';
+import Uol from '../assets/images/inventario/uol.png';
+import Terra from '../assets/images/inventario/terra.png';
+import R7 from '../assets/images/inventario/r7.png';
+import Abril from '../assets/images/inventario/abril.png';
+import EditoraGlobo from '../assets/images/inventario/editora-globo.png';
+import Webmedia from '../assets/images/inventario/webmedia.png';
+import OLX from '../assets/images/inventario/olx.png';
+import Deezer from '../assets/images/inventario/deezer.png';
+import Gameloft from '../assets/images/inventario/gameloft.png';
+import DailyMotion from '../assets/images/inventario/dailymotion.png';
+import ClimaTempo from '../assets/images/inventario/climatempo.png';
+import InfoMoney from '../assets/images/inventario/infomoney.png';
+import SuaMusica from '../assets/images/inventario/sua-musica.png';
+import GloboPlay from '../assets/images/inventario/globoplay.png';
+import LG from '../assets/images/inventario/lg.png';
+import YouTube from '../assets/images/inventario/youtube.png';
+import iCarros from '../assets/images/inventario/icarros.png';
+import Pluto from '../assets/images/inventario/pluto.png';
+import CNN from '../assets/images/inventario/cnn.png';
+import Folha from '../assets/images/inventario/folha.png';
+import Estadao from '../assets/images/inventario/estadao.png';
+import Ubisoft from '../assets/images/inventario/ubisoft.png';
+import Vagas from '../assets/images/inventario/vagas.png';
 
-const categorias = [
-    { id: 1, titulo: 'Portais', logos: [Globo, Terra, UOL, R7] },
-    { id: 2, titulo: 'Feminino', logos: [VIX, PurePeople] },
-    { id: 3, titulo: 'Gastronomia', logos: [TudoGostoso] },
-    { id: 4, titulo: 'Saúde', logos: [MinhaVida] },
-    { id: 5, titulo: 'Esportes', logos: [] },
-    { id: 6, titulo: 'Automotivo', logos: [Webmotors, iCarros] },
+
+const inventario = [
+    { id: 1, titulo: 'Globo', logo: Globo },
+    { id: 2, titulo: 'Uol', logo: Uol },
+    { id: 3, titulo: 'Terra', logo: Terra },
+    { id: 4, titulo: 'R7', logo: R7 },
+    { id: 5, titulo: 'Abril', logo: Abril },
+    { id: 6, titulo: 'EditoraGlobo', logo: EditoraGlobo },
+    { id: 7, titulo: 'Webmedia', logo: Webmedia },
+    { id: 8, titulo: 'OLX', logo: OLX },
+    { id: 9, titulo: 'Deezer', logo: Deezer },
+    { id: 10, titulo: 'Gameloft', logo: Gameloft },
+    { id: 11, titulo: 'DailyMotion', logo: DailyMotion },
+    { id: 12, titulo: 'ClimaTempo', logo: ClimaTempo },
+    { id: 13, titulo: 'InfoMoney', logo: InfoMoney },
+    { id: 14, titulo: 'SuaMusica', logo: SuaMusica },
+    { id: 15, titulo: 'GloboPlay', logo: GloboPlay },
+    { id: 16, titulo: 'LG', logo: LG },
+    { id: 17, titulo: 'YouTube', logo: YouTube },
+    { id: 18, titulo: 'iCarros', logo: iCarros },
+    { id: 19, titulo: 'Pluto', logo: Pluto },
+    { id: 20, titulo: 'CNN', logo: CNN },
+    { id: 21, titulo: 'Folha', logo: Folha },
+    { id: 22, titulo: 'Estadao', logo: Estadao },
+    { id: 23, titulo: 'Ubisoft', logo: Ubisoft },
+    { id: 24, titulo: 'Vagas', logo: Vagas },
 ];
-
-const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 3, // Altere o número de cards visíveis conforme necessário
-    slidesToScroll: 1,
-    autoplay: true,
-    responsive: [
-        {
-            breakpoint: 768, // Médio
-            settings: {
-                slidesToShow: 1, // Ajuste para 3 cards por vez em telas médias
-            },
-        },
-        {
-            breakpoint: 480, // Pequeno
-            settings: {
-                slidesToShow: 1, // Mantenha 1 card por vez em telas pequenas
-            },
-        },
-    ],
-};
 
 const Inventario = () => {
     return (
         <>
-            <div className="w-full md:w-3/5 py-12 md:p-8 mt-16 md:mt-4 p-8">
-                <h2 className="w-full md:text-2xl h2-bold mb-4 text-dark-4">Inventario</h2>
-                <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
-                <p className='text-dark-4 text-justify py-4'>Lorem ipsum dolor sit amet consectetur. Neque neque imperdiet scelerisque dapibus. Est cras purus.</p>
-            </div>
-            <Slider {...settings}>
-                {categorias.map((categoria) => (
-                    <div key={categoria.id} className="px-12">
-                        <div className=" min-w-[240px] md:max-w-[260px] p-6 border border-gray-900 rounded-[10px]">
-                            <h3 className="text-dark-3 text-lg text-center">{categoria.titulo}</h3>
-                            <hr className="my-2 border-t border-gray-900" />
-                            <div className="flex flex-col justify-center items-center gap-4 mt-5">
-                                {categoria.logos.map((logo, index) => (
-                                    <img key={index} src={logo} alt={`Logo ${categoria.titulo} ${index + 1}`} className="mx-2" width={80} />
-                                ))}
+            <div className="bg-white pb-12">
+                <div className="w-full py-12 md:p-8 mt-16 md:mt-4 p-8">
+                    <h2 className="w-full md:text-2xl h2-bold mb-4 text-original-black">Inventário Premium</h2>
+                    <hr className="border w-[200px] border-original/90 mt-4 mb-4" />
+                    <p className="text-dark-4 text-justify py-4">
+                        Acesso aos principais Portais, Sites e Plataformas com atuação no Brasil, alguns exemplos abaixo:
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 px-8">
+                    {inventario.map((item) => (
+                        <div key={item.id} className="py-4 border border-gray-900 rounded-[4px]">
+                            <div className="flex justify-center items-center">
+                                <img
+                                    src={item.logo}
+                                    alt={`Logo ${item.titulo}`}
+                                    width={110}
+                                />
                             </div>
                         </div>
-                    </div>
-                ))}
-            </Slider>
+                    ))}
+                </div>
+            </div>
         </>
     )
 }
