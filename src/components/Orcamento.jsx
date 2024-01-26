@@ -27,7 +27,7 @@ const Orcamento = () => {
                 </label>
             </div>
             <div className="w-full md:w-1/5 px-4">
-                <button className="bg-original text-dark-3 py-4 px-8 rounded-[32px] flex flex-row items-center justify-center gap-2">
+                <button className="bg-original text-dark-3 hover:bg-original-h py-4 px-8 rounded-[32px] flex flex-row items-center justify-center gap-2">
                     <img src={PlusSign} width={16} />
                     Enviar
                 </button>

@@ -13,10 +13,10 @@ const scrollToNossosProdutos = () => {
 const Hero = () => {
     return (
         <div className="home-container">
-            <img src={HeroBG} className='opacity-10 md:opacity-100' />
+            <img src={HeroBG} className='hero-img mb-16 xs:mb-0' />
             <div className='hero-content'>
 
-                <h2 className="text-12 md:h2-bold text-original-black">
+                <h2 className="h2-bold text-original-black">
                     Solução tecnológica para Programmatic<br />Deals e Projetos Especiais
                 </h2>
                 <p className='text-original-black'>Original Ads</p>

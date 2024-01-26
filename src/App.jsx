@@ -1,31 +1,22 @@
 import './globals.css'
-import CTAMediaKit from './components/CTAMediaKit'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
-import NossosClientes from './components/NossosClientes'
-import NossosProdutos from './components/NossosProdutos'
-import Orcamento from './components/Orcamento'
-import QuemSomos from './components/QuemSomos'
-import Produtos from './components/Produtos'
-import Copyright from './components/Copyright'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import PoliticaPrivacidade from './pages/PoliticaPrivacidade'
+import MainLayout from './pages/MainLayout'
 
 function App() {
   return (
-    <>
-      <main>
-        <Navbar />
-        <Hero />
-        <QuemSomos />
-        <NossosClientes />
-        <NossosProdutos />
-        <Produtos />
-        <Orcamento />
-        <CTAMediaKit />
-        <Footer />
-        <Copyright />
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/politica-de-privacidade"
+            element={<PoliticaPrivacidade />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

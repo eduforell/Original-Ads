@@ -151,11 +151,15 @@
 
   /* Home & Hero */
   .home-container {
-    @apply flex flex-col flex-1 items-center gap-10 relative;
+    @apply flex flex-col flex-1 gap-10 relative;
   }
 
   .hero-content {
     @apply absolute w-full h-full top-0 flex flex-col justify-center items-start text-left px-14;
+  }
+
+  .hero-img {
+    @apply opacity-10 md:opacity-100 min-h-96 min-w-96 mr-0 object-cover scale-150 sm:scale-100;
   }
 
   /* Mobile menu */

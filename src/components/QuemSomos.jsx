@@ -1,4 +1,4 @@
-import BgQuemSomos from '../assets/images/quem-somos.jpg';
+import BgQuemSomos from '../assets/images/quem-somos.png';
 
 const QuemSomos = () => {
     return (

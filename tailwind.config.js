@@ -36,6 +36,7 @@ export const theme = {
       'light-3': '#7878A3',
       'light-4': '#f5f5f5',
       original: '#FFBA26',
+      'original-h': '#ca9420',
       'original-dark': '#505355',
       'original-dark1': '#5C5F61',
       'original-black': '#000000',

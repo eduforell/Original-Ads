@@ -1,24 +1,64 @@
-import Logo from '../assets/images/1500x512-logo-black.png';
+import Logo from '../assets/images/logo-originalads.png';
 import MenuIcon from '../assets/icons/menu.svg';
 import { useState, Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react'
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     function closeModal() {
-        setIsOpen(false);
+        setIsOpen(false)
     }
 
     function openModal() {
-        setIsOpen(true);
+        setIsOpen(true)
     }
+
+    const initialState = {
+        name: '',
+        email: '',
+        message: '',
+    };
+
+    const [formData, setFormData] = useState(initialState);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (isLoading) {
+            return;
+        }
+        // Aqui você pode adicionar a lógica para enviar o e-mail usando uma API, por exemplo.
+        console.log('Dados do formulário:', formData);
+        // Resetar o formulário após o envio
+        setFormData({
+            name: '',
+            email: '',
+            message: '',
+        });
+
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setIsFormSubmitted(true);
+            setFormData(initialState); // Redefine os campos do formulário
+            setIsLoading(false);
+        }, 1000);
+    };
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
-
     return (
         <>
             {isMobileMenuOpen && (
@@ -28,7 +68,7 @@ const Navbar = () => {
                 />
             )}
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-30" onClose={closeModal}>
+                <Dialog as="div" className="relative z-10" onClose={closeModal}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -38,10 +78,10 @@ const Navbar = () => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black/75" />
+                        <div className="fixed inset-0 bg-black/25" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 overflow-y-auto ">
+                    <div className="fixed inset-0 overflow-y-auto">
                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
@@ -52,31 +92,84 @@ const Navbar = () => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="z-50 w-full max-w-md transform overflow-hidden rounded-2xl bg-gray-800 p-8 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-lg text-white font-medium leading-6 text-lode-purple text-center"
+                                        className="text-lg font-medium leading-6 text-gray-900 text-center"
                                     >
-                                        Solicitar Orcamento
+                                        {isFormSubmitted ? ('Solicitação Enviada') : ('Solicite um orçamento')}
+
                                     </Dialog.Title>
-                                    <div className="flex justify-center items-center mt-6">
-                                        <input placeholder='E-mail' className='text-original-black w-full outline p-2 rounded-[12px]' />
+                                    <div className="mt-2">
+                                        {isFormSubmitted ? (
+                                            <>
+                                                <p className="text-center text-gray-500 py-6">
+                                                    Obrigado, seu pedido de orçamento foi recebido e em breve retornaremos seu contato.
+                                                </p>
+                                                <div className='flex items-center justify-center py-2'>
+                                                    <button
+                                                        type="button"
+                                                        className="min-w-[100px] outline outline-1 bg-transparent justify-center items-center rounded-md border px-4 py-2 text-sm font-medium text-original-black hover:bg-gray-900 hover:outline-none hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                        onClick={closeModal}
+                                                    >
+                                                        Fechar formulário
+                                                    </button>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <form onSubmit={handleSubmit}>
+                                                <div className='py-4'>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                                        placeholder="Nome"
+                                                        value={formData.name} onChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div className='py-4'>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        autoComplete="email"
+                                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                                        placeholder="E-mail"
+                                                        value={formData.email} onChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div className='py-4'>
+                                                    <textarea
+                                                        name="message"
+                                                        rows={3}
+                                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        placeholder='Mensagem / Orçamento'
+                                                        value={formData.message} onChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div className="mt-4 flex flex-row gap-4 items-end justify-end">
+                                                    <button
+                                                        type="button"
+                                                        className="min-w-[100px] outline outline-1 bg-transparent inline-flex justify-center rounded-md border px-4 py-2 text-sm font-medium text-original-black hover:bg-gray-900 hover:outline-none hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                        onClick={closeModal}
+                                                    >
+                                                        Cancelar
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        className={`min-w-[100px] outline outline-1 ${isLoading
+                                                            ? 'bg-gray-300 cursor-not-allowed'
+                                                            : 'bg-gray-900 hover:bg-original'
+                                                            } inline-flex justify-center rounded-md border px-4 py-2 text-sm font-medium text-white focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2`}
+                                                        onClick={handleSubmit}
+                                                    >
+                                                        {isLoading ? 'Enviando...' : 'Enviar'}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        )}
                                     </div>
-                                    <div className="flex justify-center text-center mt-4 mb-4">
-                                        <textarea placeholder='Informe o que deseja' className='w-full outline p-2 rounded-[12px]' />
-                                    </div>
-                                    <div className="mt-8 flex justify-between gap-4">
-                                        <button
-                                            type="button"
-                                            className="outline-1 border border-original-black text-original-black w-full h-[42px] rounded hover:text-white hover:bg-original-black"
-                                            onClick={closeModal}
-                                        >
-                                            Cancelar
-                                        </button>
-                                        <button className='bg-original-black text-white w-full h-[42px] rounded hover:border hover:invert hover:outline-1 hover:bg-transparent'>
-                                            <h4 className='text-sm md:h4-bold'>Enviar</h4>
-                                        </button>
-                                    </div>
+
+
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
@@ -118,22 +211,6 @@ const Navbar = () => {
                         >
                             <p>Solicite um orçamento</p>
                         </button>
-                        <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='relative z-50'>
-                            <Dialog.Panel>
-                                <Dialog.Title>Deactivate account</Dialog.Title>
-                                <Dialog.Description>
-                                    This will permanently deactivate your account
-                                </Dialog.Description>
-
-                                <p>
-                                    Are you sure you want to deactivate your account? All of your data
-                                    will be permanently removed. This action cannot be undone.
-                                </p>
-
-                                <button onClick={() => setIsOpen(false)}>Deactivate</button>
-                                <button onClick={() => setIsOpen(false)}>Cancel</button>
-                            </Dialog.Panel>
-                        </Dialog>
                     </div>
                 </div>
                 {/* Aqui adicionamos o menu mobile */}

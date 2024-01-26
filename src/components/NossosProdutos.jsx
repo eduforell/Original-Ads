@@ -3,7 +3,7 @@ import BgNossosProdutos from '../assets/images/nossos-produtos.png'
 const NossosProdutos = () => {
     return (
         <>
-            <div className="flex items-center mx-auto mt-[80px] md:mt-0 flex-col sm:flex-row" id="nossos-produtos">
+            <div className="flex items-center mx-auto mt-[80px] md:mt-0 flex-col sm:flex-row mb-10 md:mb-0" id="nossos-produtos">
                 {/* 40% de imagem de background */}
                 <div className="w-full md:w-2/5 p-10">
                     <h2 className="w-full md:text-2xl h2-bold mb-4 text-original-black">Nossos Produtos</h2>
