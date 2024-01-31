@@ -1,4 +1,6 @@
 import BgNossosProdutos from '../assets/images/nossos-produtos.png'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const NossosProdutos = () => {
     return (
@@ -18,7 +20,9 @@ const NossosProdutos = () => {
                 </div>
                 {/* 60% de conteúdo de texto */}
                 <div className="w-full md:w-3/5 flex items-center justify-center">
-                    <img src={BgNossosProdutos} alt="BG Quem Somos - Original Ads" className="overflow-hidden" />
+                    <Zoom>
+                        <img src={BgNossosProdutos} alt="Nossos Produtos - Original Ads" className="overflow-hidden" />
+                    </Zoom>
                 </div>
             </div>
         </>

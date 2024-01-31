@@ -1,9 +1,9 @@
-import Logo from '../assets/images/logo-originalads.png';
+import Logo from '../assets/images/originalads-logo.png';
 import MenuIcon from '../assets/icons/menu.svg';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 
-const Navbar = () => {
+const AltNavbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -179,7 +179,7 @@ const Navbar = () => {
             <nav className="topbar">
                 <div className="flex items-center justify-between mx-auto p-4">
                     <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src={Logo} className="h-10" alt="Original Ads Logo" />
+                        <img src={Logo} className="h-8 2xl:h-12 2xl:p-2" alt="Original Ads Logo" />
                     </a>
                     <button
                         onClick={toggleMobileMenu}
@@ -228,6 +228,11 @@ const Navbar = () => {
                                     Nossos Produtos
                                 </a>
                             </li>
+                            <li>
+                                <a href='/solicitar-orcamento' className="block py-2 px-3 font-bold text-original-black rounded">
+                                    <p>Solicite um orçamento</p>
+                                </a>
+                            </li>
                         </ul>
                         {/* ... */}
                     </div>
@@ -237,4 +242,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default AltNavbar

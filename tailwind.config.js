@@ -41,8 +41,15 @@ export const theme = {
       'original-dark1': '#5C5F61',
       'original-black': '#000000',
     },
+    scale: {
+      175: '1.75',
+      200: '2.00',
+      225: '2.25',
+      250: '2.55',
+    },
     screens: {
       xs: '480px',
+      '3xl': '1925px',
     },
     width: {
       420: '420px',
