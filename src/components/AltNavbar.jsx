@@ -1,6 +1,7 @@
 import Logo from '../assets/images/logo-originalads.png';
 import MenuIcon from '../assets/icons/menu.svg';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,9 +39,9 @@ const Navbar = () => {
                         {/* Adicione aqui os itens do menu mobile */}
                         <ul className='absolute bg-original w-full p-2 left-0'>
                             <li className='relative mb-2'>
-                                <a href="https://originalads.com.br/" className="block py-2 px-3 font-bold text-original-black rounded">
+                                <Link to="/" className="block py-2 px-3 font-bold text-original-black rounded">
                                     Voltar para Home
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         {/* ... */}

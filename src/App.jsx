@@ -5,6 +5,7 @@ import PoliticaPrivacidade from './pages/PoliticaPrivacidade'
 import AltLayout from './pages/AltLayout'
 import MainLayout from './pages/MainLayout'
 import OrcamentoForm from './components/OrcamentoForm';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -12,20 +13,17 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route
-            path="/solicitar-orcamento"
-            element={<OrcamentoForm />}
-          />
-          <Route
-            path="/politica-de-privacidade"
-            element={<PoliticaPrivacidade />}
-          />
+          <Route path='*' element={<NotFound />} />
         </Route>
 
         <Route element={<AltLayout />}>
           <Route
             path="/politica-de-privacidade"
             element={<PoliticaPrivacidade />}
+          />
+          <Route
+            path="/solicitar-orcamento"
+            element={<OrcamentoForm />}
           />
         </Route>
       </Routes>

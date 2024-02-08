@@ -189,7 +189,7 @@ const Hero = () => {
                 <img src={HeroBG} className='hero-img mb-16 xs:mb-0' />
                 <div className='hero-content'>
 
-                    <h2 className="h1-hero mt-[360px] md:mt-[280px] text-original-black">
+                    <h2 className="h1-hero mt-[480px] md:mt-[280px] text-original-black">
                         Solução tecnológica para Programmatic<br />Deals e Projetos Especiais
                     </h2>
                     <p className='text-original-black'>Original Ads</p>

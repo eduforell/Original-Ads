@@ -1,4 +1,3 @@
-import Copyright from '../components/Copyright'
 
 const PoliticaPrivacidade = () => {
     return (
@@ -18,7 +17,6 @@ const PoliticaPrivacidade = () => {
                     <p className='text-justify py-4'>Utilizamos cookies para melhorar o desempenho e a sua experiência como utilizador no nosso site.</p>
                 </div>
             </div>
-            <Copyright />
         </>
     )
 }

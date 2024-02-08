@@ -2,63 +2,38 @@ import Logo from '../assets/images/originalads-logo.png';
 import MenuIcon from '../assets/icons/menu.svg';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
+import emailjs from '@emailjs/browser';
 
 const AltNavbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [enviado, setEnviado] = useState(false);
 
-    function closeModal() {
-        setIsOpen(false)
-    }
-
-    function openModal() {
-        setIsOpen(true)
-    }
-
-    const initialState = {
-        name: '',
-        email: '',
-        message: '',
-    };
-
-    const [formData, setFormData] = useState(initialState);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isLoading) {
-            return;
+
+        try {
+            await emailjs.sendForm('service_x27359p', 'template_du300br', e.target, 'Yk2U5_s-Kbo3wAJpZ');
+            setSending(true);
+            setEnviado(true);
+        } catch (error) {
+            console.log('Falha ao enviar solicitação:', error);
         }
-        // Aqui você pode adicionar a lógica para enviar o e-mail usando uma API, por exemplo.
-        console.log('Dados do formulário:', formData);
-        // Resetar o formulário após o envio
-        setFormData({
-            name: '',
-            email: '',
-            message: '',
-        });
+    };
 
-        setIsLoading(true);
+    const closeModal = () => {
+        setIsOpen(false);
+    };
 
-        setTimeout(() => {
-            setIsFormSubmitted(true);
-            setFormData(initialState); // Redefine os campos do formulário
-            setIsLoading(false);
-        }, 1000);
+    const openModal = () => {
+        setIsOpen(true);
     };
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
+
     return (
         <>
             {isMobileMenuOpen && (
@@ -97,11 +72,11 @@ const AltNavbar = () => {
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900 text-center"
                                     >
-                                        {isFormSubmitted ? ('Solicitação Enviada') : ('Solicite um orçamento')}
+                                        {enviado ? ('Solicitação Enviada') : ('Solicite um orçamento')}
 
                                     </Dialog.Title>
                                     <div className="mt-2">
-                                        {isFormSubmitted ? (
+                                        {enviado ? (
                                             <>
                                                 <p className="text-center text-gray-500 py-6">
                                                     Obrigado, seu pedido de orçamento foi recebido e em breve retornaremos seu contato.
@@ -121,20 +96,18 @@ const AltNavbar = () => {
                                                 <div className='py-4'>
                                                     <input
                                                         type="text"
-                                                        name="name"
+                                                        name="from_name"
                                                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                                         placeholder="Nome"
-                                                        value={formData.name} onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className='py-4'>
                                                     <input
                                                         type="email"
-                                                        name="email"
+                                                        name="email_from"
                                                         autoComplete="email"
                                                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                                         placeholder="E-mail"
-                                                        value={formData.email} onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className='py-4'>
@@ -143,7 +116,6 @@ const AltNavbar = () => {
                                                         rows={3}
                                                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                         placeholder='Mensagem / Orçamento'
-                                                        value={formData.message} onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="mt-4 flex flex-row gap-4 items-end justify-end">
@@ -155,14 +127,13 @@ const AltNavbar = () => {
                                                         Cancelar
                                                     </button>
                                                     <button
-                                                        type="button"
-                                                        className={`min-w-[100px] outline outline-1 ${isLoading
+                                                        type="submit"
+                                                        className={`min-w-[100px] outline outline-1 ${sending
                                                             ? 'bg-gray-300 cursor-not-allowed'
                                                             : 'bg-gray-900 hover:bg-original'
                                                             } inline-flex justify-center rounded-md border px-4 py-2 text-sm font-medium text-white focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2`}
-                                                        onClick={handleSubmit}
                                                     >
-                                                        {isLoading ? 'Enviando...' : 'Enviar'}
+                                                        {sending ? 'Enviando...' : 'Enviar'}
                                                     </button>
                                                 </div>
                                             </form>
